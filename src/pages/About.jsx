@@ -33,7 +33,9 @@ export default function About() {
                     <p className="eyebrow">{groomer.role}</p>
                     <h2>{groomer.name}</h2>
                     <strong>{groomer.years}</strong>
-                    <p>{groomer.bio}</p>
+                    <div className="team-card__bio">
+                      {groomer.bio.split('\n\n').map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                    </div>
                   </div>
                 </article>
               </Reveal>

@@ -3,7 +3,7 @@ import { Heart, ImagePlus, MessageCircleHeart, Send, Star } from 'lucide-react'
 import FacebookIcon from '../components/FacebookIcon'
 import Reveal from '../components/Reveal'
 import ReviewRail from '../components/ReviewRail'
-import { business, facebookReviews } from '../data'
+import { business, facebookReviews, googleReviews } from '../data'
 
 export default function Reviews() {
   const [status, setStatus] = useState('idle')
@@ -44,8 +44,11 @@ export default function Reviews() {
             <div className="review-stars" aria-label="Five stars">{[1,2,3,4,5].map(i => <Star key={i} fill="currentColor"/>)}</div>
             <p className="eyebrow">Reviews help local businesses grow</p>
             <h2>Leave some love.</h2>
-            <p>Facebook is the easiest live review option right now — and it keeps your feedback connected to the business page.</p>
-            <a className="btn btn--dark" href={business.facebook} target="_blank" rel="noreferrer"><FacebookIcon size={18}/> Review us on Facebook</a>
+            <p>Leave a review wherever you prefer — Google or Facebook both help local pet parents find Suds ’n Scissors.</p>
+            <div className="review-platform-actions">
+              <a className="btn btn--dark" href={business.googleReviews} target="_blank" rel="noreferrer"><Star size={18}/> Review us on Google</a>
+              <a className="btn btn--outline-review" href={business.facebook} target="_blank" rel="noreferrer"><FacebookIcon size={18}/> Review us on Facebook</a>
+            </div>
             <div className="review-note"><Heart/><span>Photos of freshly groomed pups are extremely encouraged.</span></div>
           </Reveal>
 
@@ -58,15 +61,21 @@ export default function Reviews() {
               <label className="file-field"><ImagePlus/><span>Add a photo <small>JPG or PNG</small></span><input type="file" name="photo" accept="image/png,image/jpeg" /></label>
               <button className="btn btn--gold btn--full" type="submit" disabled={status === 'sending'}><Send size={17}/>{status === 'sending' ? 'Sending…' : 'Send review'}</button>
               {status === 'sent' && <p className="form-status form-status--ok">Thank you! Your review was sent.</p>}
-              {status === 'error' && <p className="form-status form-status--error">That didn’t go through. Please use Facebook for now.</p>}
-              {status === 'facebook' && <p className="form-status">The website upload form will go live once its form endpoint is connected. For now, please use the Facebook button.</p>}
+{status === 'error' && (
+  <p className="form-status form-status--error">
+    That didn’t go through. Please leave your review on Google or Facebook instead.
+  </p>
+)}              {status === 'facebook' && (
+  <p className="form-status">
+    The website review form isn’t connected yet. For now, please leave your review on Google or Facebook.
+  </p>
+)}
             </form>
           </Reveal>
         </div>
       </section>
 
-      {facebookReviews.length > 0 && (
-        <section className="section section--dark review-highlights">
+{(googleReviews.length > 0 || facebookReviews.length > 0) && (        <section className="section section--dark review-highlights">
           <div className="shell">
             <ReviewRail />
           </div>

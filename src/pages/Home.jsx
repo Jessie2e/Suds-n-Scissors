@@ -64,7 +64,7 @@ export default function Home() {
               <Link to="/pricing" className="service-card">
                 <div className="service-card__icon"><span>✂</span></div>
                 <h3>Grooming</h3>
-                <p>Baths, tidy-ups, full grooms, and finishing touches tailored to your pup’s coat and comfort.</p>
+                <p>Baths, brush-outs, full grooms, and finishing touches tailored to your pup’s coat and comfort.</p>
                 <span className="text-link">See grooming prices <ArrowRight size={17}/></span>
               </Link>
             </Reveal>

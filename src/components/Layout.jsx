@@ -36,9 +36,9 @@ export default function Layout({ children }) {
     <>
       <ScissorCursor />
       <header className="site-header">
-        <div className="nav-wrap nav-wrap--center-mark">
-          <Logo wordsOnly />
+        <div className="nav-wrap nav-wrap--center-title">
           <Logo markOnly />
+          <Logo wordsOnly />
 
           <div className="nav-right">
             <nav className="desktop-nav" aria-label="Primary navigation">

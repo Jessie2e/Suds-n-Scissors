@@ -99,7 +99,7 @@ export default function Pricing() {
             </div>
           </Reveal>
           <Reveal className="pricing-sign-card" delay={100}>
-            <img src="/assets/pricing-sign.jpg" alt="Suds 'n Scissors in-store grooming price board"/>
+            <img src="/assets/OdenDog.jpg" alt="Suds 'n Scissors in-store grooming price board"/>
             <p>Original in-store pricing board</p>
           </Reveal>
         </div>
