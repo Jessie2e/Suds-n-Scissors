@@ -1,15 +1,32 @@
 import { useState } from 'react'
-import { ArrowUpRight } from 'lucide-react'
+import {
+  ArrowUpRight,
+  PawPrint,
+  Scissors,
+} from 'lucide-react'
 import FacebookIcon from '../components/FacebookIcon'
 import Reveal from '../components/Reveal'
 import Lightbox from '../components/Lightbox'
 import { business, galleryImages } from '../data'
 
+const groomerFilters = [
+  { label: 'All', value: 'all' },
+  { label: 'Kennedy', value: 'Kennedy' },
+  { label: 'Bri', value: 'Bri' },
+]
+
 export default function Gallery() {
   const [selected, setSelected] = useState(null)
+  const [activeGroomer, setActiveGroomer] = useState('all')
 
-  // Temporary featured image until the live Facebook connection is added.
   const facebookFeature = galleryImages[0]
+
+  const filteredImages =
+    activeGroomer === 'all'
+      ? galleryImages
+      : galleryImages.filter(
+          (item) => item.groomer === activeGroomer
+        )
 
   return (
     <>
@@ -36,10 +53,43 @@ export default function Gallery() {
 
       <section className="section section--cream gallery-page">
         <div className="shell">
+
+          <div className="gallery-filter">
+            <span className="gallery-filter__label">
+              See grooms by
+            </span>
+
+            <div className="gallery-filter__buttons">
+              {groomerFilters.map((filter) => (
+                <button
+                  key={filter.value}
+                  type="button"
+                  className={
+                    activeGroomer === filter.value
+                      ? 'gallery-filter__button is-active'
+                      : 'gallery-filter__button'
+                  }
+                  onClick={() =>
+                    setActiveGroomer(filter.value)
+                  }
+                  aria-pressed={
+                    activeGroomer === filter.value
+                  }
+                >
+                  {filter.value !== 'all' && (
+                    <Scissors size={14} />
+                  )}
+
+                  {filter.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="masonry-grid">
-            {galleryImages.map((item, i) => (
+            {filteredImages.map((item, i) => (
               <Reveal
-                key={`${item.src}-${i}`}
+                key={item.src}
                 delay={(i % 4) * 45}
               >
                 <button
@@ -49,7 +99,8 @@ export default function Gallery() {
                   <img
                     src={item.src}
                     alt={
-                      item.name && item.name !== 'name unknown'
+                      item.name &&
+                      item.name !== 'name unknown'
                         ? `${item.name} at Suds 'n Scissors`
                         : "Suds 'n Scissors grooming client"
                     }
@@ -60,13 +111,39 @@ export default function Gallery() {
                     View <ArrowUpRight size={15} />
                   </span>
 
-                  <strong className="gallery-name">
-                    {item.name || 'name unknown'}
-                  </strong>
+                  <div className="gallery-tags">
+                    <strong className="gallery-name">
+                      <PawPrint
+                        size={17}
+                        strokeWidth={2}
+                      />
+                      {item.name || 'name unknown'}
+                    </strong>
+
+                    {item.groomer && (
+                      <span className="gallery-groomer">
+                        <Scissors
+                          size={14}
+                          strokeWidth={2}
+                        />
+                        {item.groomer}
+                      </span>
+                    )}
+                  </div>
                 </button>
               </Reveal>
             ))}
           </div>
+
+          {filteredImages.length === 0 && (
+            <div className="gallery-empty">
+              <Scissors size={24} />
+
+              <p>
+                No grooms have been added for this groomer yet.
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
