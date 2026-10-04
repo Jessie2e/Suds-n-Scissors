@@ -153,23 +153,15 @@ export const groomers = [
   {
     name: 'Kennedy Cudnohufsky',
     role: 'Owner + Groomer',
-    years: 'Almost 6 years grooming professionally',
-    image: '/assets/OwnerKennedy.jpg',
-    bio: `Hi, I’m Kennedy! I’m the owner and groomer behind Suds ’n Scissors, and this salon truly holds a huge piece of my heart.
-
-I started this business completely on my own as a one-woman band, with a dream of creating a grooming salon where dogs could feel safe, loved, comfortable, and cared for like family. What started with just me has grown into something I’m incredibly proud of, and I’ve poured my heart and soul into every part of it along the way.
-
-I’ve been grooming professionally for almost six years, and I still genuinely love what I do. For me, grooming has never been just about giving a dog a cute haircut—it’s about building trust, learning each dog’s personality, and making their time with us as positive and stress-free as possible.
-
-Outside of the salon, I’m married to my husband, Josh, and I’m a proud mom to our two boys, Jameson and Jaiden. My family has been such a huge part of this journey, and they are a big reason I continue to work so hard to make this little dream of mine something special.
-
-Suds ’n Scissors is more than just my business—it’s something I’ve built with love, hard work, sacrifice, and a whole lot of heart. I’m so thankful for every family who trusts me with their dogs and allows me to do what I love every day.`,
+    years: 'Founder of Suds ’n Scissors',
+    image: '/assets/dog3.jpg',
+    bio: 'Kennedy built Suds ’n Scissors around one big idea: grooming should feel comfortable, thoughtful, and personal for every dog. What began as a one-woman operation has grown into a full grooming and boarding facility designed around safety, accessibility, and lower-stress care.',
   },
   {
     name: 'Brianne “Bri” Cone',
     role: 'Groomer',
     years: '14 years grooming experience',
-    image: '/assets/BriConeGroomer.jpg',
+    image: '/assets/dogafter.jpg',
     bio: `Originally from New Jersey, I moved to Alabama for love in 2020. I have been a dog and rabbit groomer for the past 14 years. My experience doesn't stop there though, working in a pet store environment I came to love and pamper all kinds of critters. From guinea pigs to iguanas, I have clipped all sorts of nails and even given some of them haircuts!
 
 Animals have always been a deep passion of mine, especially dogs. From a young girl my favorite thing to do was go to the community library and grab the biggest book chock full of dog breed information! Being a dog groomer allows me to love on and get to appreciate all types of breeds and personalities (without ending up with my own personal rescue at the house).
