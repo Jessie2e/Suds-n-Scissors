@@ -3295,3 +3295,652 @@ em{font-weight:600}
     line-height: 1.45;
   }
 }
+
+/* =========================================================
+   2026-10-06 — TABLET + MOBILE SCROLL REDUCTION PASS
+   Native swipe rails keep the existing React markup intact.
+   ========================================================= */
+
+/* ---------- TABLET: simplify the facility composition ---------- */
+@media (max-width: 900px) {
+  .services.section,
+  .pricing-tool.section,
+  .included-section.section,
+  .specialty-pricing.section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  /* HOME — service cards become a swipe rail instead of a long stack. */
+  .service-grid {
+    grid-template-columns: none !important;
+    grid-auto-flow: column;
+    grid-auto-columns: min(68vw, 480px);
+    gap: 16px;
+    overflow-x: auto;
+    overflow-y: visible;
+    padding: 4px 2px 18px;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 2px;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .service-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .service-grid > .reveal {
+    min-width: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .service-grid .service-card {
+    width: 100%;
+    max-width: none !important;
+    margin: 0;
+  }
+
+  /* HOME — force the facility into a clean vertical reading order. */
+  .facility__grid {
+    grid-template-columns: 1fr !important;
+    gap: 42px !important;
+    align-items: start;
+  }
+
+  .facility__copy {
+    max-width: 700px;
+  }
+
+  .facility__copy h2 {
+    max-width: 680px;
+  }
+
+  .facility__media {
+    position: relative;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    width: 100%;
+    max-width: 700px;
+    min-height: 0 !important;
+    margin: 0 auto;
+    overflow: visible;
+  }
+
+  .facility__media::before {
+    display: none !important;
+  }
+
+  .facility__photo,
+  .facility__photo--primary,
+  .facility__photo--secondary {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: 360px !important;
+    transform: none !important;
+    border-radius: 28px !important;
+  }
+
+  .facility__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* HOME — value cards become a compact swipe rail on narrower screens. */
+  .value-grid {
+    grid-template-columns: none !important;
+    grid-auto-flow: column;
+    grid-auto-columns: min(58vw, 390px);
+    gap: 14px;
+    overflow-x: auto;
+    padding: 3px 2px 16px;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .value-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .value-grid > .reveal {
+    min-width: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .value-card {
+    min-height: 225px;
+    display: grid;
+    align-content: center;
+    padding: 28px 24px;
+  }
+
+  /* PRICING — package cards become swipeable. */
+  .price-card-grid {
+    grid-template-columns: none !important;
+    grid-auto-flow: column;
+    grid-auto-columns: min(68vw, 470px);
+    align-items: stretch;
+    gap: 16px;
+    overflow-x: auto;
+    padding: 6px 2px 18px;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .price-card-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .price-card-grid > .reveal {
+    min-width: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .price-card-grid .price-card {
+    width: 100%;
+    max-width: none !important;
+    margin: 0;
+  }
+
+  .price-card--feature {
+    transform: none !important;
+  }
+
+  .weight-picker-wrap {
+    margin-bottom: 30px;
+  }
+
+  .price-note {
+    margin-top: 22px;
+  }
+
+  /* PRICING — included items stay compact instead of becoming one tall column. */
+  .included-grid {
+    grid-template-columns: 1fr !important;
+    gap: 34px !important;
+  }
+
+  .included-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    column-gap: 24px;
+    row-gap: 0;
+  }
+
+  .pricing-sign-card {
+    width: min(100%, 500px);
+    margin: 0 auto;
+    transform: none !important;
+  }
+
+  .pricing-sign-card img {
+    max-height: 360px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* PRICING — specialty cards become another swipe rail. */
+  .specialty-grid {
+    grid-template-columns: none !important;
+    grid-auto-flow: column;
+    grid-auto-columns: min(66vw, 460px);
+    gap: 16px;
+    overflow-x: auto;
+    padding: 5px 2px 18px;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .specialty-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .specialty-grid > .reveal {
+    min-width: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .specialty-grid .specialty-card {
+    width: 100%;
+    max-width: none !important;
+    margin: 0;
+    min-height: 340px;
+  }
+
+  /* Add-ons become a single swipeable chip row. */
+  .addon-cloud {
+    display: grid !important;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    justify-content: start !important;
+    gap: 9px;
+    width: 100%;
+    margin: 30px 0 34px;
+    padding: 2px 2px 10px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .addon-cloud::-webkit-scrollbar {
+    display: none;
+  }
+
+  .addon-cloud span {
+    scroll-snap-align: start;
+  }
+
+  .specialty-cta {
+    margin-top: 0;
+    padding-top: 32px;
+  }
+}
+
+/* ---------- PHONE: one-card-at-a-time carousels + tighter pricing ---------- */
+@media (max-width: 640px) {
+  .services.section,
+  .pricing-tool.section,
+  .included-section.section,
+  .specialty-pricing.section {
+    padding-top: 48px;
+    padding-bottom: 50px;
+  }
+
+  .services .section-heading {
+    margin-bottom: 26px;
+  }
+
+  .services .section-heading h2 {
+    font-size: clamp(2.75rem, 13vw, 3.35rem);
+  }
+
+  .services .section-heading--center p:last-child {
+    font-size: .95rem;
+    line-height: 1.55;
+  }
+
+  .service-grid {
+    grid-auto-columns: min(86vw, 390px);
+    gap: 13px;
+    padding-bottom: 14px;
+  }
+
+  .service-card {
+    min-height: 0;
+    padding: 25px 22px !important;
+    border-radius: 24px;
+  }
+
+  .service-card__icon {
+    width: 58px;
+    height: 58px;
+    margin-bottom: 19px;
+  }
+
+  .service-card h3 {
+    font-size: 1.85rem;
+  }
+
+  .service-card p {
+    margin-bottom: 20px;
+    font-size: .94rem;
+    line-height: 1.55;
+  }
+
+  /* Facility: readable copy first, then swipe one full bath photo at a time. */
+  .facility.section {
+    padding-top: 54px;
+    padding-bottom: 58px;
+  }
+
+  .facility__grid {
+    gap: 30px !important;
+  }
+
+  .facility__copy .eyebrow {
+    margin-bottom: 10px;
+  }
+
+  .facility__copy h2 {
+    font-size: clamp(2.9rem, 14vw, 3.75rem) !important;
+    line-height: .95;
+    margin-bottom: 22px;
+  }
+
+  .facility__copy p:not(.eyebrow) {
+    font-size: .96rem;
+    line-height: 1.65;
+  }
+
+  .facility__facts {
+    margin: 22px 0 28px;
+    gap: 12px;
+  }
+
+  .facility__facts span {
+    font-size: .92rem;
+  }
+
+  .facility__copy .btn {
+    width: 100%;
+  }
+
+  .facility__media {
+    display: grid !important;
+    grid-template-columns: none !important;
+    grid-auto-flow: column;
+    grid-auto-columns: 88%;
+    gap: 12px;
+    width: 100%;
+    max-width: none;
+    min-height: 0 !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 2px 0 14px;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .facility__media::-webkit-scrollbar {
+    display: none;
+  }
+
+  .facility__photo,
+  .facility__photo--primary,
+  .facility__photo--secondary {
+    position: relative !important;
+    width: 100% !important;
+    height: 310px !important;
+    inset: auto !important;
+    transform: none !important;
+    border-radius: 26px !important;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .value-grid {
+    grid-auto-columns: min(84vw, 360px);
+    gap: 12px;
+    padding-bottom: 13px;
+  }
+
+  .value-card {
+    min-height: 210px;
+    padding: 25px 22px;
+  }
+
+  .value-card svg {
+    width: 31px;
+    height: 31px;
+    margin-bottom: 12px;
+  }
+
+  .value-card h3 {
+    font-size: 1.35rem;
+  }
+
+  /* Pricing packages: show one card with a useful peek of the next. */
+  .price-card-grid {
+    grid-auto-columns: min(86vw, 390px);
+    gap: 13px;
+    padding-bottom: 14px;
+  }
+
+  .price-card {
+    min-height: 0;
+    padding: 24px 21px !important;
+    border-radius: 23px;
+  }
+
+  .price-card__ribbon {
+    position: static;
+    width: max-content;
+    max-width: 100%;
+    margin: 0 0 14px auto;
+  }
+
+  .price-card h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .price-card > p:not(.eyebrow) {
+    min-height: 0 !important;
+    margin-bottom: 8px;
+    font-size: .94rem;
+    line-height: 1.55;
+  }
+
+  .price-card__price {
+    margin: 19px 0;
+    padding-top: 15px;
+  }
+
+  .price-card__price span {
+    font-size: .77rem;
+  }
+
+  .price-card__price strong {
+    font-size: 2.35rem;
+  }
+
+  .price-card .btn {
+    min-height: 50px;
+  }
+
+  .price-note {
+    gap: 11px;
+    margin-top: 18px;
+    padding: 15px 16px;
+    border-radius: 15px;
+  }
+
+  .price-note p {
+    font-size: .87rem;
+    line-height: 1.5;
+  }
+
+  /* "Every core service includes" becomes 4-ish compact rows, not 8 tall rows. */
+  .included-grid {
+    gap: 26px !important;
+  }
+
+  .included-grid h2 {
+    font-size: clamp(2.65rem, 13vw, 3.3rem);
+    margin-bottom: 14px;
+  }
+
+  .included-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    column-gap: 15px;
+    margin-top: 20px;
+  }
+
+  .included-list span {
+    align-items: flex-start;
+    min-height: 56px;
+    padding: 10px 0;
+    font-size: .88rem;
+    line-height: 1.32;
+  }
+
+  .included-list svg {
+    width: 15px;
+    height: 15px;
+    margin-top: 2px;
+    flex: 0 0 auto;
+  }
+
+  .pricing-sign-card {
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+  }
+
+  .pricing-sign-card img {
+    height: 280px;
+    max-height: none;
+    border-radius: 14px;
+    object-fit: cover;
+  }
+
+  .pricing-sign-card p {
+    margin-top: 8px;
+    font-size: 1.08rem;
+  }
+
+  .specialty-pricing__heading {
+    margin-bottom: 26px;
+  }
+
+  .specialty-pricing__heading h2 {
+    font-size: clamp(2.75rem, 13vw, 3.45rem);
+    line-height: .96;
+  }
+
+  .specialty-pricing__heading > p {
+    font-size: .94rem;
+    line-height: 1.55;
+  }
+
+  .specialty-grid {
+    grid-auto-columns: min(84vw, 380px);
+    gap: 13px;
+    padding-bottom: 14px;
+  }
+
+  .specialty-grid .specialty-card {
+    min-height: 315px;
+    padding: 25px 22px;
+    border-radius: 23px;
+  }
+
+  .specialty-card > svg {
+    margin-bottom: 21px;
+  }
+
+  .specialty-card h2 {
+    font-size: 2rem;
+    line-height: 1.04;
+  }
+
+  .specialty-card p:not(.eyebrow) {
+    font-size: .93rem;
+    line-height: 1.55;
+  }
+
+  .addon-cloud {
+    margin: 24px 0 28px;
+  }
+
+  .addon-cloud span {
+    padding: 9px 13px;
+    font-size: .8rem;
+  }
+
+  .specialty-cta {
+    gap: 18px;
+    padding-top: 27px;
+  }
+
+  .specialty-cta h2 {
+    font-size: 2.2rem;
+  }
+
+  .specialty-cta .btn {
+    width: 100%;
+  }
+
+  .price-disclaimer.section {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+}
+
+/* Very small phones: keep two-column included list readable. */
+@media (max-width: 390px) {
+  .included-list {
+    column-gap: 11px;
+  }
+
+  .included-list span {
+    font-size: .82rem;
+  }
+
+  .service-grid,
+  .price-card-grid,
+  .specialty-grid,
+  .value-grid {
+    grid-auto-columns: 89vw;
+  }
+
+  .facility__media {
+    grid-auto-columns: 91%;
+  }
+}
+
+/* =========================================================
+   PRICING SWIPE HINTS — tablet + mobile
+   ========================================================= */
+
+.mobile-swipe-hint {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .mobile-swipe-hint {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+
+    margin: -2px 2px 12px;
+
+    color: var(--gold);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .mobile-swipe-hint > span {
+    display: inline-block;
+    font-size: 1.15rem;
+    line-height: 1;
+    animation: pricingSwipeHint 1.5s ease-in-out infinite;
+  }
+
+  .specialty-pricing .mobile-swipe-hint {
+    margin-top: -8px;
+  }
+}
+
+@keyframes pricingSwipeHint {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-swipe-hint > span {
+    animation: none;
+  }
+}
+

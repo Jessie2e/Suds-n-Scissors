@@ -61,6 +61,10 @@ export default function Pricing() {
             </div>
           </Reveal>
 
+          <p className="mobile-swipe-hint">
+            Swipe to compare services <span aria-hidden="true">→</span>
+          </p>
+
           <div className="price-card-grid">
             {groomingServices.map((service, i) => (
               <Reveal key={service.name} delay={i * 70}>
@@ -114,6 +118,10 @@ export default function Pricing() {
             </div>
             <p>Add a little polish, practical care, or personality to a grooming appointment. Current options can vary, so ask when you book.</p>
           </Reveal>
+
+          <p className="mobile-swipe-hint">
+            Swipe to explore extras <span aria-hidden="true">→</span>
+          </p>
 
           <div className="specialty-grid">
             <Reveal>
