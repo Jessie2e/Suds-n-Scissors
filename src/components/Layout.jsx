@@ -45,7 +45,7 @@ export default function Layout({ children }) {
               {nav.map(([label, path]) => <NavLink key={path} to={path}>{label}</NavLink>)}
             </nav>
             <div className="nav-actions">
-              <a className="nav-book" href={business.phoneHref}>Book a Groom <ArrowUpRight size={14} /></a>
+              <a className="nav-book" href={business.phoneHref} aria-label="Call to book a groom"><span>Book a Groom</span><ArrowUpRight className="nav-book__arrow" size={14} /><Phone className="nav-book__phone" size={18} /></a>
               <button className="menu-toggle" onClick={() => setOpen(!open)} aria-label="Toggle menu" aria-expanded={open}>{open ? <X /> : <Menu />}</button>
             </div>
           </div>
@@ -81,7 +81,7 @@ export default function Layout({ children }) {
         </div>
         <div className="footer__bottom">
           <span>© {new Date().getFullYear()} Suds ’n Scissors · Dog Grooming & Boarding · Cullman, Alabama</span>
-          <a className="footer__credit" href="https://jessie2e.com" target="_blank" rel="noreferrer">Built by 2e Studio ↗</a>
+          <span className="footer__credit">Designed by 2e Studio</span>
         </div>
       </footer>
     </>

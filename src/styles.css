@@ -3896,51 +3896,54 @@ em{font-weight:600}
   }
 }
 
-/* =========================================================
-   PRICING SWIPE HINTS — tablet + mobile
-   ========================================================= */
-
-.mobile-swipe-hint {
-  display: none;
-}
-
+/* Pricing rail instructions and manual controls. */
+.pricing-swipe-controls { display: none; }
 @media (max-width: 900px) {
-  .mobile-swipe-hint {
+  .pricing-swipe-controls {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    gap: 8px;
-
-    margin: -2px 2px 12px;
-
-    color: var(--gold);
-    font-size: .72rem;
-    font-weight: 700;
-    letter-spacing: .1em;
-    line-height: 1;
-    text-transform: uppercase;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0 2px 10px;
   }
-
-  .mobile-swipe-hint > span {
-    display: inline-block;
-    font-size: 1.15rem;
-    line-height: 1;
-    animation: pricingSwipeHint 1.5s ease-in-out infinite;
+  .pricing-swipe-controls p {
+    margin: 0;
+    color: var(--forest);
+    font-size: .8rem;
+    font-weight: 600;
+    line-height: 1.4;
   }
-
-  .specialty-pricing .mobile-swipe-hint {
-    margin-top: -8px;
+  .pricing-swipe-controls__buttons { display: flex; gap: 6px; flex: none; }
+  .pricing-swipe-controls button {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--forest);
+    cursor: pointer;
   }
+  .pricing-swipe-controls button:disabled { opacity: .35; cursor: default; }
+  .pricing-swipe-controls button:focus-visible,
+  #grooming-packages:focus-visible,
+  #grooming-extras:focus-visible { outline: 2px solid var(--forest); outline-offset: 3px; }
 }
 
-@keyframes pricingSwipeHint {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(5px); }
-}
+/* Keep the business name centered and visible on phones and tablets. */
+.nav-book__phone { display: none; }
+.nav-wrap--center-title .brand--words-only { display: flex; }
+.nav-wrap--center-title .menu-toggle { width: 44px; height: 44px; }
+.mobile-menu { top: 100%; }
 
-@media (prefers-reduced-motion: reduce) {
-  .mobile-swipe-hint > span {
-    animation: none;
-  }
+@media (max-width: 640px) {
+  .nav-wrap--center-title .brand--words-only .brand__words strong { font-size: .9rem; }
+  .nav-wrap--center-title .brand--words-only .brand__words small { display: none; }
+  .nav-wrap--center-title .nav-right { gap: 2px; }
+  .nav-wrap--center-title .nav-actions { gap: 2px; }
+  .nav-wrap--center-title .nav-book { width: 44px; height: 44px; padding: 0; justify-content: center; }
+  .nav-wrap--center-title .nav-book > span,
+  .nav-wrap--center-title .nav-book__arrow { display: none; }
+  .nav-wrap--center-title .nav-book__phone { display: block; width: 18px; height: 18px; }
 }
-

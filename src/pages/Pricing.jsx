@@ -1,10 +1,13 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { ArrowRight, CalendarDays, Check, Droplets, Info, Palette, Sparkles, WandSparkles } from 'lucide-react'
 import Reveal from '../components/Reveal'
+import SwipeControls from '../components/SwipeControls'
 import { addOns, business, groomingServices, includedServices, weightGroups } from '../data'
 
 export default function Pricing() {
   const [weight, setWeight] = useState('small')
+  const servicesRef = useRef(null)
+  const extrasRef = useRef(null)
   const selected = useMemo(() => weightGroups.find((group) => group.id === weight), [weight])
 
   return (
@@ -61,11 +64,9 @@ export default function Pricing() {
             </div>
           </Reveal>
 
-          <p className="mobile-swipe-hint">
-            Swipe to compare services <span aria-hidden="true">→</span>
-          </p>
+          <SwipeControls railRef={servicesRef} railId="grooming-packages" label="compare services" />
 
-          <div className="price-card-grid">
+          <div className="price-card-grid" id="grooming-packages" ref={servicesRef} tabIndex={0} role="region" aria-label="Grooming packages">
             {groomingServices.map((service, i) => (
               <Reveal key={service.name} delay={i * 70}>
                 <article className={`price-card ${i === 2 ? 'price-card--feature' : ''}`}>
@@ -119,11 +120,9 @@ export default function Pricing() {
             <p>Add a little polish, practical care, or personality to a grooming appointment. Current options can vary, so ask when you book.</p>
           </Reveal>
 
-          <p className="mobile-swipe-hint">
-            Swipe to explore extras <span aria-hidden="true">→</span>
-          </p>
+          <SwipeControls railRef={extrasRef} railId="grooming-extras" label="explore extras" />
 
-          <div className="specialty-grid">
+          <div className="specialty-grid" id="grooming-extras" ref={extrasRef} tabIndex={0} role="region" aria-label="Grooming extras">
             <Reveal>
               <article className="specialty-card specialty-card--dark">
                 <Droplets/>
