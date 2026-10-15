@@ -3947,3 +3947,37 @@ em{font-weight:600}
   .nav-wrap--center-title .nav-book__arrow { display: none; }
   .nav-wrap--center-title .nav-book__phone { display: block; width: 18px; height: 18px; }
 }
+
+/* Boarding guest photos: a compact desktop collage and manual swipe rail. */
+.boarding-stays__photos { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.boarding-stays__photo { margin: 0; min-width: 0; overflow: hidden; border-radius: 20px; background: var(--cream); border: 1px solid var(--line); }
+.boarding-stays__photo:first-child { grid-column: span 2; grid-row: span 2; }
+.boarding-stays__photo img { width: 100%; height: 250px; object-fit: cover; object-position: center; }
+.boarding-stays__photo:first-child img { height: calc(100% - 46px); }
+.boarding-stays__photo figcaption { min-height: 46px; padding: 12px 14px; font-size: .82rem; line-height: 1.4; color: var(--forest); }
+@media (min-width: 1025px) {
+  .boarding-stays__photo:nth-child(2) { grid-column: 4; grid-row: 1; }
+  .boarding-stays__photo:nth-child(3) { grid-column: 4; grid-row: 2; }
+  .boarding-stays__photo:nth-child(4) { grid-column: 3; grid-row: 1; }
+  .boarding-stays__photo:last-child { grid-column: 3; grid-row: 2; }
+}
+.boarding-stays__controls { display: none; }
+.boarding-stays__photos:focus-visible, .boarding-stays__controls button:focus-visible { outline: 2px solid var(--forest); outline-offset: 4px; }
+@media (max-width: 1024px) {
+  .boarding-stays.section { padding-block: 48px; }
+  .boarding-stays .section-heading { margin-bottom: 22px; }
+  .boarding-stays__controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+  .boarding-stays__controls p { margin: 0; color: var(--forest); font-size: .82rem; }
+  .boarding-stays__controls > div { display: flex; gap: 8px; flex: none; }
+  .boarding-stays__controls button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--gold); border-radius: 50%; color: var(--forest); background: transparent; cursor: pointer; }
+  .boarding-stays__controls button:disabled { opacity: .35; cursor: default; }
+  .boarding-stays__photos { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 44%; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-inline: contain; padding: 4px 2px 12px; scroll-padding-inline: 2px; }
+  .boarding-stays__photo, .boarding-stays__photo:first-child { grid-column: auto; grid-row: auto; scroll-snap-align: start; scroll-snap-stop: always; background: transparent; border: 0; border-radius: 0; overflow: visible; }
+  .boarding-stays__photo img, .boarding-stays__photo:first-child img { height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 18px; background: transparent; }
+  .boarding-stays__photo:first-child img { object-position: 32% center; }
+  .boarding-stays__photo figcaption { min-height: 0; padding: 12px 2px 0; font-size: .85rem; line-height: 1.45; }
+}
+@media (max-width: 640px) {
+  .boarding-stays__photos { grid-auto-columns: 88%; gap: 12px; }
+  .boarding-stays__photo figcaption { font-size: .8rem; }
+}
